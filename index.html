@@ -21,6 +21,10 @@
             Watch on-chain size, conviction, and copy-trade pressure blend into
             a heatmap for degens who read fear as alpha.
           </p>
+          <div class="hero-controls">
+            <button id="toggle-heatmap" class="btn btn-outline">Toggle Heatmap</button>
+            <button id="refresh-data" class="btn">Refresh Data</button>
+          </div>
         </div>
         <div class="hero-card">
           <div class="card-label">Live Bias</div>
@@ -36,6 +40,14 @@
             <span>Copy-trade signal</span>
             <span id="copy-value">Strong</span>
           </div>
+          <div class="mini-row">
+            <span>Market mood</span>
+            <span id="mood-value">Bullish</span>
+          </div>
+          <div class="mini-row">
+            <span>Whale activity</span>
+            <span id="activity-value">High</span>
+          </div>
         </div>
       </header>
 
@@ -43,7 +55,15 @@
         <section class="panel heatmap-panel">
           <div class="panel-head">
             <h2>Signal Heatmap</h2>
-            <span>24h whale clusters</span>
+            <div class="panel-controls">
+              <select id="heatmap-filter">
+                <option value="all">All Signals</option>
+                <option value="confidence">Confidence</option>
+                <option value="fear">Fear</option>
+                <option value="copy">Copy Trade</option>
+              </select>
+              <span id="heatmap-count">12 signals</span>
+            </div>
           </div>
           <div class="heatmap" id="heatmap" aria-label="Whale confidence heatmap"></div>
         </section>
@@ -51,7 +71,15 @@
         <section class="panel feed-panel">
           <div class="panel-head">
             <h2>Whale Tape</h2>
-            <span>fresh prints</span>
+            <div class="panel-controls">
+              <select id="tape-filter">
+                <option value="all">All Activity</option>
+                <option value="buy">Buys</option>
+                <option value="sell">Sells</option>
+                <option value="copy">Copy Trade</option>
+              </select>
+              <span id="tape-count">4 events</span>
+            </div>
           </div>
           <div class="feed" id="feed"></div>
         </section>
@@ -63,7 +91,77 @@
           </div>
           <div class="metrics" id="metrics"></div>
         </section>
+
+        <section class="panel analytics-panel">
+          <div class="panel-head">
+            <h2>Analytics Dashboard</h2>
+            <span>whale behavior patterns</span>
+          </div>
+          <div class="analytics-content">
+            <div class="chart-container">
+              <canvas id="whale-chart"></canvas>
+            </div>
+            <div class="analytics-summary">
+              <h3>Recent Patterns</h3>
+              <div class="pattern-list" id="pattern-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel signals-panel">
+          <div class="panel-head">
+            <h2>Signal Strength</h2>
+            <span>confidence metrics</span>
+          </div>
+          <div class="signal-strength">
+            <div class="strength-meter">
+              <div class="meter-label">Overall Confidence</div>
+              <div class="meter-bar">
+                <div class="meter-fill" id="confidence-meter" style="width: 72%"></div>
+              </div>
+              <div class="meter-value">72%</div>
+            </div>
+            <div class="strength-meter">
+              <div class="meter-label">Fear Index</div>
+              <div class="meter-bar">
+                <div class="meter-fill" id="fear-meter" style="width: 28%"></div>
+              </div>
+              <div class="meter-value">28%</div>
+            </div>
+            <div class="strength-meter">
+              <div class="meter-label">Copy Trade Signal</div>
+              <div class="meter-bar">
+                <div class="meter-fill" id="copy-meter" style="width: 85%"></div>
+              </div>
+              <div class="meter-value">85%</div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Flash Reef Vault</h3>
+            <p>Real-time whale tracking for crypto degens</p>
+          </div>
+          <div class="footer-section">
+            <h3>Data Sources</h3>
+            <ul>
+              <li>Chainalysis</li>
+              <li>Ethereum Mainnet</li>
+              <li>On-chain analytics</li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Methodology</h3>
+            <p>Signals derived from whale wallet activity and market sentiment</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Flash Reef Vault. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
